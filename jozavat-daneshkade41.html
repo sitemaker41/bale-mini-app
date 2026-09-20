@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <meta name="theme-color" content="#0a1622">
+    <title>جزوات دانش‌کده41 | آرشیو هوشمند دروس</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = { theme: { extend: { screens: { xs: '400px' } } } };
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --midnight: #0a1622;
+            --gold: #c5a065;
+            --gold-soft: #d9bd86;
+            --navy: #1b2a3a;
+            --cream: #e4d8c6;
+            --cream-soft: #f0e9dc;
+        }
+
+        * { -webkit-tap-highlight-color: transparent; box-sizing: border-box; }
+
+        html { -webkit-text-size-adjust: 100%; }
+
+        body {
+            font-family: 'Vazirmatn', system-ui, sans-serif;
+            transition: background-color 0.6s cubic-bezier(0.4, 0, 0.2, 1), color 0.6s ease;
+            line-height: 1.7;
+            min-height: 100vh;
+            font-size: 16px;
+        }
+
+        /* ===== Background aurora ===== */
+        .aurora {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
+        .aurora::before, .aurora::after {
+            content: "";
+            position: absolute;
+            width: 70vw;
+            height: 70vw;
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.35;
+            animation: float 18s ease-in-out infinite;
+        }
+        .aurora::before {
+            top: -20%;
+            right: -10%;
+            background: radial-gradient(circle, var(--gold), transparent 70%);
+        }
+        .aurora::after {
+            bottom: -25%;
+            left: -15%;
+            background: radial-gradient(circle, var(--navy), transparent 70%);
+            animation-delay: -9s;
+        }
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(4%, 6%) scale(1.1); }
+        }
+
+        /* ===== Glass cards ===== */
+        .glass-card {
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            transition: transform 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+                        box-shadow 0.45s ease,
+                        background 0.6s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .glass-card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            padding: 1px;
+            background: linear-gradient(135deg, rgba(197,160,101,0.6), transparent 40%, transparent 60%, rgba(197,160,101,0.3));
+            -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+            opacity: 0.7;
+        }
+        @media (hover: hover) {
+            .glass-card:hover {
+                transform: translateY(-6px);
+                box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
+            }
+        }
+        @media (hover: none) {
+            .glass-card:active {
+                transform: scale(0.98);
+            }
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-soft) 50%, var(--gold) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* ===== Glass gradient buttons ===== */
+        .btn-glass {
+            background: linear-gradient(135deg, rgba(197,160,101,0.9), rgba(217,189,134,0.85));
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            color: #0a1622;
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-glass::after {
+            content: "";
+            position: absolute;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: left 0.6s ease;
+        }
+        @media (hover: hover) {
+            .btn-glass:hover {
+                filter: brightness(1.08);
+                transform: scale(1.02);
+                box-shadow: 0 12px 28px rgba(197, 160, 101, 0.35);
+            }
+            .btn-glass:hover::after { left: 100%; }
+        }
+        .btn-glass:active { transform: scale(0.97); }
+
+        .btn-ghost {
+            background: transparent;
+            border: 1px solid rgba(197, 160, 101, 0.35);
+            transition: all 0.3s ease;
+        }
+        .btn-ghost:hover {
+            background: rgba(197, 160, 101, 0.1);
+            border-color: rgba(197, 160, 101, 0.6);
+        }
+
+        /* ===== Accordion ===== */
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .accordion-content.open {
+            max-height: 600px;
+        }
+        .accordion-inner {
+            opacity: 0;
+            transform: translateY(-8px);
+            transition: opacity 0.4s ease 0.1s, transform 0.4s ease 0.1s;
+        }
+        .accordion-content.open .accordion-inner {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .arrow {
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .arrow.open { transform: rotate(180deg); }
+
+        .note-row {
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+            min-height: 52px;
+        }
+        @media (hover: hover) {
+            .note-row:hover {
+                transform: translateX(-4px);
+            }
+        }
+
+        /* ===== Modal ===== */
+        #modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 50;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            background: rgba(10, 22, 34, 0.55);
+            opacity: 0;
+            transition: opacity 0.35s ease;
+        }
+        #modal.show {
+            display: flex;
+            opacity: 1;
+        }
+        .modal-panel {
+            transform: scale(0.92) translateY(10px);
+            opacity: 0;
+            transition: transform 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.35s ease;
+            max-height: calc(100vh - 2rem);
+            overflow-y: auto;
+        }
+        #modal.show .modal-panel {
+            transform: scale(1) translateY(0);
+            opacity: 1;
+        }
+
+        .download-orb {
+            background: linear-gradient(135deg, rgba(197,160,101,0.25), rgba(197,160,101,0.05));
+            box-shadow: inset 0 0 30px rgba(197,160,101,0.15), 0 0 40px rgba(197,160,101,0.2);
+            animation: pulse 2.5s ease-in-out infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { box-shadow: inset 0 0 30px rgba(197,160,101,0.15), 0 0 40px rgba(197,160,101,0.2); }
+            50% { box-shadow: inset 0 0 40px rgba(197,160,101,0.25), 0 0 60px rgba(197,160,101,0.35); }
+        }
+
+        /* ===== Theme tokens ===== */
+        .dark-mode {
+            background-color: var(--midnight);
+            color: var(--cream);
+        }
+        .light-mode {
+            background-color: var(--cream-soft);
+            color: var(--midnight);
+        }
+
+        .dark-mode .glass-card { background: rgba(27, 42, 58, 0.55); }
+        .light-mode .glass-card { background: rgba(255, 255, 255, 0.65); }
+
+        .dark-mode .note-row:hover { background: rgba(197,160,101,0.08); border-color: rgba(197,160,101,0.25); }
+        .light-mode .note-row:hover { background: rgba(197,160,101,0.12); border-color: rgba(197,160,101,0.4); }
+
+        .dark-mode .modal-panel { background: rgba(27, 42, 58, 0.85); }
+        .light-mode .modal-panel { background: rgba(255, 255, 255, 0.9); }
+
+        .dark-mode .subtle-text { color: rgba(228, 216, 198, 0.6); }
+        .light-mode .subtle-text { color: rgba(10, 22, 34, 0.55); }
+
+        .dark-mode .divider { background: rgba(197,160,101,0.15); }
+        .light-mode .divider { background: rgba(10,22,34,0.08); }
+
+        .lesson-num-badge {
+            background: linear-gradient(135deg, rgba(197,160,101,0.2), rgba(197,160,101,0.05));
+            border: 1px solid rgba(197,160,101,0.3);
+            color: var(--gold);
+        }
+
+        /* ===== Scrollbar ===== */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        .dark-mode::-webkit-scrollbar-thumb { background: rgba(197,160,101,0.4); border-radius: 10px; }
+        .light-mode::-webkit-scrollbar-thumb { background: rgba(10,22,34,0.25); border-radius: 10px; }
+
+        /* ===== Entrance animation ===== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            animation: reveal 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+        @keyframes reveal {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .logo-ring {
+            box-shadow: 0 0 0 2px rgba(197,160,101,0.3), 0 0 40px rgba(197,160,101,0.2);
+        }
+
+        /* ===== Mobile-first safe areas ===== */
+        @supports (padding: max(0px)) {
+            header, main, footer {
+                padding-left: max(1.5rem, env(safe-area-inset-left));
+                padding-right: max(1.5rem, env(safe-area-inset-right));
+            }
+        }
+
+        /* Prevent layout shift on very small screens */
+        @media (max-width: 380px) {
+            body { font-size: 15px; }
+        }
+    </style>
+</head>
+<body class="dark-mode overflow-x-hidden">
+
+    <div class="aurora"></div>
+
+    <!-- ===== Header ===== -->
+    <header class="relative z-10 w-full pt-8 pb-6 sm:pt-10 sm:pb-8 px-5 sm:px-8 lg:px-16">
+        <div class="max-w-7xl mx-auto flex flex-col xs:flex-row justify-between items-center xs:items-start gap-5 xs:gap-6">
+            <div class="flex items-center gap-4 sm:gap-5 text-center xs:text-right">
+                <div class="logo-ring w-16 h-16 sm:w-20 sm:h-20 rounded-full overflow-hidden shrink-0">
+                    <img src="https://media.base44.com/images/public/user_6a986641936cc2c893b77777/7527b5db4_image.png"
+                         alt="لوگوی دانش‌کده41" class="w-full h-full object-cover">
+                </div>
+                <div class="flex flex-col">
+                    <h1 class="text-2xl sm:text-4xl lg:text-5xl font-extrabold gradient-text leading-tight">جزوات دانش‌کده41</h1>
+                    <p class="text-[11px] sm:text-sm subtle-text mt-1 font-light tracking-wide">آرشیو هوشمند منابع آموزشی دروس</p>
+                </div>
+            </div>
+
+            <button onclick="toggleTheme()" aria-label="تغییر تم"
+                class="glass-card w-11 h-11 sm:w-12 sm:h-12 rounded-full flex items-center justify-center group shrink-0">
+                <svg id="theme-icon" class="w-5 h-5" style="color: var(--gold)" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 9h-1m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                </svg>
+            </button>
+        </div>
+
+        <div class="divider h-px w-full mt-6 sm:mt-8 max-w-7xl mx-auto"></div>
+    </header>
+
+    <!-- ===== Main Grid ===== -->
+    <main class="relative z-10 w-full max-w-7xl mx-auto px-5 sm:px-8 lg:px-16 pb-20 sm:pb-28">
+        <div class="mb-7 sm:mb-10 text-center xs:text-right">
+            <h2 class="text-lg sm:text-xl font-bold mb-1.5 sm:mb-2">دروس ارائه‌شده</h2>
+            <p class="text-xs sm:text-sm subtle-text">برای مشاهده جزوه‌ها، روی هر درس کلیک کنید.</p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-7" id="lesson-grid">
+            <!-- injected by JS -->
+        </div>
+    </main>
+
+    <!-- ===== Footer ===== -->
+    <footer class="relative z-10 pb-8 sm:pb-10 text-center px-5">
+        <p class="text-xs subtle-text">جزوات دانش‌کده41 — تمامی حقوق محفوظ است</p>
+    </footer>
+
+    <!-- ===== Modal ===== -->
+    <div id="modal" role="dialog" aria-modal="true">
+        <div class="modal-panel glass-card w-full max-w-md p-7 sm:p-10 lg:p-12 rounded-3xl text-center relative">
+            <button onclick="closeModal()" aria-label="بستن"
+                class="absolute top-4 left-4 sm:top-5 sm:left-5 w-10 h-10 rounded-full flex items-center justify-center btn-ghost transition-all">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: var(--gold)">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+
+            <div class="download-orb w-20 h-20 sm:w-24 sm:h-24 mx-auto mb-6 sm:mb-7 rounded-full flex items-center justify-center">
+                <svg class="w-10 h-10 sm:w-11 sm:h-11" style="color: var(--gold)" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                </svg>
+            </div>
+
+            <span class="lesson-num-badge inline-block text-xs font-bold px-4 py-1.5 rounded-full mb-3 sm:mb-4" id="modal-badge">جزوه</span>
+            <h2 class="text-xl sm:text-2xl font-bold mb-3" id="modal-title">آماده دریافت فایل</h2>
+            <p class="subtle-text text-sm mb-7 sm:mb-9 leading-relaxed">این فایل شامل سرفصل‌های تدریس‌شده در کلاس است. برای دانلود نسخه کامل با کیفیت بالا روی دکمه زیر بزنید.</p>
+
+            <button onclick="startDownload()" class="btn-glass w-full py-3.5 sm:py-4 rounded-2xl font-bold tracking-wide flex items-center justify-center gap-2 text-sm sm:text-base">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                </svg>
+                شروع دانلود جزوه
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // ===== Build lessons =====
+        const grid = document.getElementById('lesson-grid');
+        let html = '';
+        for (let i = 1; i <= 10; i++) {
+            const notes = [1, 2, 3].map(j => `
+                <div onclick="openModal(${i}, ${j})" class="note-row flex items-center justify-between p-3.5 sm:p-4 rounded-xl cursor-pointer group">
+                    <div class="flex items-center gap-3">
+                        <span class="w-8 h-8 rounded-lg flex items-center justify-center text-xs font-bold shrink-0" style="background: rgba(197,160,101,0.15); color: var(--gold)">${j}</span>
+                        <span class="font-medium text-sm sm:text-base">جزوه شماره ${j}</span>
+                    </div>
+                    <svg class="w-5 h-5 opacity-50 group-hover:opacity-100 transition-opacity shrink-0" style="color: var(--gold)" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                    </svg>
+                </div>
+            `).join('');
+
+            html += `
+                <div class="glass-card rounded-3xl reveal" style="animation-delay: ${i * 0.06}s">
+                    <button onclick="toggleAccordion(${i})" class="w-full p-5 sm:p-6 lg:p-7 text-right flex justify-between items-center gap-3 group">
+                        <div class="flex items-center gap-3 sm:gap-4 min-w-0">
+                            <span class="lesson-num-badge w-10 h-10 sm:w-11 sm:h-11 rounded-2xl flex items-center justify-center font-extrabold text-base sm:text-lg shrink-0">${i}</span>
+                            <div class="min-w-0">
+                                <span class="text-[10px] uppercase tracking-widest subtle-text block mb-0.5">Lesson</span>
+                                <h3 class="text-base sm:text-lg lg:text-xl font-bold truncate">درس شماره ${i}</h3>
+                            </div>
+                        </div>
+                        <svg id="arrow-${i}" class="arrow w-5 h-5 opacity-60 group-hover:opacity-100 shrink-0" style="color: var(--gold)" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <div id="content-${i}" class="accordion-content">
+                        <div class="accordion-inner px-5 sm:px-6 lg:px-7 pb-5 sm:pb-6 pt-1 space-y-2.5 sm:space-y-3">
+                            ${notes}
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+        grid.innerHTML = html;
+
+        // ===== Accordion =====
+        function toggleAccordion(id) {
+            const content = document.getElementById(`content-${id}`);
+            const arrow = document.getElementById(`arrow-${id}`);
+            const isOpen = content.classList.contains('open');
+
+            document.querySelectorAll('.accordion-content').forEach(el => el.classList.remove('open'));
+            document.querySelectorAll('.arrow').forEach(el => el.classList.remove('open'));
+
+            if (!isOpen) {
+                content.classList.add('open');
+                arrow.classList.add('open');
+            }
+        }
+
+        // ===== Theme =====
+        function toggleTheme() {
+            const body = document.body;
+            const icon = document.getElementById('theme-icon');
+            if (body.classList.contains('dark-mode')) {
+                body.classList.replace('dark-mode', 'light-mode');
+                icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>';
+            } else {
+                body.classList.replace('light-mode', 'dark-mode');
+                icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 9h-1m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>';
+            }
+        }
+
+        // ===== Modal =====
+        let currentLesson = null, currentNote = null;
+        function openModal(lesson, note) {
+            currentLesson = lesson;
+            currentNote = note;
+            document.getElementById('modal-title').innerText = `جزوه شماره ${note} از درس ${lesson}`;
+            document.getElementById('modal-badge').innerText = `درس ${lesson} • جزوه ${note}`;
+            const modal = document.getElementById('modal');
+            modal.classList.add('show');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('modal');
+            modal.classList.remove('show');
+            document.body.style.overflow = 'auto';
+        }
+
+        function startDownload() {
+            alert(`دانلود جزوه شماره ${currentNote} از درس ${currentLesson} شروع شد (لینک نمونه)`);
+        }
+
+        document.getElementById('modal').addEventListener('click', (e) => {
+            if (e.target.id === 'modal') closeModal();
+        });
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeModal();
+        });
+    </script>
+</body>
+</html>
