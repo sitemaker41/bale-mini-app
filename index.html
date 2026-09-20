@@ -2,1008 +2,1152 @@
 
 <html lang="fa" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#0b1d33">
-    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0b1d33">
 
+<link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
 <title>جزوات دانش‌کده ۴۱</title>
 
 <style>
-    * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-    }
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
 
-    :root {
-        --midnight: #0b1d33;
-        --navy: #132b49;
-        --navy-light: #1d3c60;
-        --gold: #b98b45;
-        --gold-light: #d6b06a;
-        --cream: #f4ead5;
-        --cream-dark: #dfd0b5;
+:root{
+    --midnight:#0b1d33;
+    --navy:#132b49;
+    --navy-light:#1d3c60;
+    --gold:#b98b45;
+    --gold-light:#d6b06a;
+    --cream:#f4ead5;
+    --cream-dark:#dfd0b5;
 
-        --bg: #f5efe3;
-        --card: rgba(255,255,255,0.58);
-        --text: #0b1d33;
-        --text-soft: #536173;
-        --border: rgba(11,29,51,0.12);
-        --shadow: 0 18px 50px rgba(11,29,51,0.13);
-    }
+    --bg:#f5efe3;
+    --card:rgba(255,255,255,.58);
+    --text:#0b1d33;
+    --text-soft:#536173;
+    --border:rgba(11,29,51,.12);
+    --shadow:0 18px 50px rgba(11,29,51,.13);
+}
 
-    body.dark {
-        --bg: #071321;
-        --card: rgba(19,43,73,0.62);
-        --text: #f4ead5;
-        --text-soft: #b9c2ce;
-        --border: rgba(244,234,213,0.13);
-        --shadow: 0 18px 55px rgba(0,0,0,0.35);
-    }
+body.dark{
+    --bg:#071321;
+    --card:rgba(19,43,73,.62);
+    --text:#f4ead5;
+    --text-soft:#b9c2ce;
+    --border:rgba(244,234,213,.13);
+    --shadow:0 18px 55px rgba(0,0,0,.35);
+}
 
-    body {
-        min-height: 100vh;
-        font-family: 'Vazirmatn', 'Inter', sans-serif;
-        background:
-            radial-gradient(circle at 10% 10%, rgba(185,139,69,.18), transparent 28%),
-            radial-gradient(circle at 90% 20%, rgba(29,60,96,.17), transparent 30%),
-            var(--bg);
-        color: var(--text);
-        transition: background .35s ease, color .35s ease;
-        overflow-x: hidden;
-    }
+body{
+    min-height:100vh;
+    font-family:'Vazirmatn','Inter',sans-serif;
+    background:
+        radial-gradient(circle at 10% 10%,rgba(185,139,69,.18),transparent 28%),
+        radial-gradient(circle at 90% 20%,rgba(29,60,96,.17),transparent 30%),
+        var(--bg);
+    color:var(--text);
+    transition:background .35s ease,color .35s ease;
+    overflow-x:hidden;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+}
 
-    /* Background decoration */
-    body::before {
-        content: "";
-        position: fixed;
-        inset: 0;
-        pointer-events: none;
-        opacity: .35;
-        background-image:
-            linear-gradient(rgba(185,139,69,.035) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(185,139,69,.035) 1px, transparent 1px);
-        background-size: 35px 35px;
-        z-index: -1;
-    }
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    opacity:.35;
+    background-image:
+        linear-gradient(rgba(185,139,69,.035) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(185,139,69,.035) 1px,transparent 1px);
+    background-size:35px 35px;
+    z-index:-1;
+}
 
-    .container {
-        width: min(1180px, calc(100% - 32px));
-        margin: auto;
-    }
+.container{
+    width:min(1180px,calc(100% - 32px));
+    margin:auto;
+}
 
-    /* Header */
-    header {
-        padding: 28px 0 15px;
-    }
+/* ================= HEADER ================= */
 
-    .topbar {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 20px;
-    }
+header{
+    padding:22px 0 0;
+}
 
-    .brand {
-        display: flex;
-        align-items: center;
-        gap: 14px;
-    }
+.header-glass{
+    min-height:72px;
+    padding:10px 12px 10px 10px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    border-radius:22px;
 
-    .logo {
-        width: 55px;
-        height: 55px;
-        border-radius: 17px;
-        display: grid;
-        place-items: center;
-        color: var(--cream);
-        font-size: 25px;
-        font-weight: bold;
-        background:
-            linear-gradient(135deg, var(--midnight), var(--navy-light)),
-            var(--midnight);
-        border: 1px solid rgba(214,176,106,.35);
-        box-shadow:
-            0 10px 30px rgba(11,29,51,.25),
-            inset 0 1px 0 rgba(255,255,255,.15);
-    }
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,.48),
+            rgba(255,255,255,.20)
+        );
 
-    .brand h1 {
-        font-size: clamp(20px, 3vw, 29px);
-        font-weight: 800;
-        letter-spacing: -.7px;
-    }
+    border:1px solid rgba(255,255,255,.45);
 
-    .brand p {
-        color: var(--text-soft);
-        margin-top: 5px;
-        font-size: 13px;
-    }
+    backdrop-filter:blur(20px);
+    -webkit-backdrop-filter:blur(20px);
 
-    /* Glass button */
-    .glass-btn {
-        border: 1px solid rgba(255,255,255,.25);
-        color: var(--cream);
-        background:
-            linear-gradient(
-                135deg,
-                rgba(19,43,73,.82),
-                rgba(185,139,69,.82)
-            );
-        backdrop-filter: blur(14px);
-        -webkit-backdrop-filter: blur(14px);
-        box-shadow:
-            0 10px 25px rgba(11,29,51,.18),
-            inset 0 1px 1px rgba(255,255,255,.22);
-        cursor: pointer;
-        transition: .25s ease;
-    }
+    box-shadow:
+        0 12px 35px rgba(11,29,51,.10),
+        inset 0 1px 0 rgba(255,255,255,.65);
 
-    .glass-btn:hover {
-        transform: translateY(-2px);
-        box-shadow:
-            0 14px 32px rgba(11,29,51,.25),
-            inset 0 1px 1px rgba(255,255,255,.28);
-    }
+    transition:.35s ease;
+}
 
-    .theme-btn {
-        width: 48px;
-        height: 48px;
-        border-radius: 15px;
-        display: grid;
-        place-items: center;
-        font-size: 21px;
-    }
+body.dark .header-glass{
+    background:
+        linear-gradient(
+            135deg,
+            rgba(19,43,73,.72),
+            rgba(11,29,51,.52)
+        );
 
-    /* Hero */
-    .hero {
-        text-align: center;
-        padding: 50px 10px 35px;
-    }
+    border-color:rgba(214,176,106,.14);
 
-    .hero-badge {
-        display: inline-flex;
-        padding: 8px 15px;
-        border-radius: 100px;
-        color: var(--gold-light);
-        background: rgba(185,139,69,.11);
-        border: 1px solid rgba(185,139,69,.25);
-        font-size: 12px;
-        margin-bottom: 18px;
-    }
+    box-shadow:
+        0 15px 45px rgba(0,0,0,.25),
+        inset 0 1px 0 rgba(255,255,255,.08);
+}
 
-    .hero h2 {
-        font-size: clamp(28px, 5vw, 48px);
-        line-height: 1.35;
-        font-weight: 900;
-        background: linear-gradient(
-            90deg,
+.header-brand{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+/* لوگوی واقعی */
+
+.header-logo{
+    width:58px;
+    height:58px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-shrink:0;
+}
+
+.header-logo img{
+    width:58px;
+    height:58px;
+    object-fit:contain;
+    display:block;
+}
+
+.header-info{
+    display:flex;
+    flex-direction:column;
+    gap:3px;
+}
+
+.header-name{
+    color:var(--text);
+    font-size:15px;
+    font-weight:850;
+}
+
+.header-subtitle{
+    color:var(--text-soft);
+    font-size:10px;
+}
+
+.glass-btn{
+    border:1px solid rgba(255,255,255,.25);
+    color:var(--cream);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(19,43,73,.82),
+            rgba(185,139,69,.82)
+        );
+
+    backdrop-filter:blur(14px);
+    -webkit-backdrop-filter:blur(14px);
+
+    box-shadow:
+        0 10px 25px rgba(11,29,51,.18),
+        inset 0 1px 1px rgba(255,255,255,.22);
+
+    cursor:pointer;
+    transition:.25s ease;
+}
+
+.glass-btn:hover{
+    transform:translateY(-2px);
+
+    box-shadow:
+        0 14px 32px rgba(11,29,51,.25),
+        inset 0 1px 1px rgba(255,255,255,.28);
+}
+
+.theme-btn{
+    width:45px;
+    height:45px;
+    border-radius:14px;
+
+    display:grid;
+    place-items:center;
+
+    font-size:17px;
+}
+
+/* ================= HERO ================= */
+
+.hero{
+    text-align:center;
+    padding:65px 10px 38px;
+}
+
+.hero h2{
+    font-size:clamp(30px,5vw,52px);
+    line-height:1.3;
+    font-weight:950;
+    letter-spacing:-1.5px;
+
+    background:
+        linear-gradient(
+            100deg,
+            var(--midnight) 5%,
+            var(--gold) 48%,
+            var(--navy-light) 95%
+        );
+
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+
+    filter:drop-shadow(
+        0 8px 20px rgba(11,29,51,.08)
+    );
+}
+
+body.dark .hero h2{
+    background:
+        linear-gradient(
+            100deg,
+            var(--cream) 5%,
+            var(--gold-light) 48%,
+            #8da7c5 95%
+        );
+
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+}
+
+.hero p{
+    max-width:620px;
+    margin:17px auto 0;
+    color:var(--text-soft);
+    line-height:2;
+    font-size:13px;
+}
+
+/* ================= LESSONS ================= */
+
+.lessons-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
+    padding-bottom:60px;
+}
+
+.lesson{
+    border:1px solid var(--border);
+    border-radius:23px;
+
+    background:var(--card);
+
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+
+    box-shadow:var(--shadow);
+
+    overflow:hidden;
+    transition:.3s ease;
+}
+
+.lesson:hover{
+    transform:translateY(-3px);
+    border-color:rgba(185,139,69,.3);
+}
+
+.lesson-header{
+    width:100%;
+    min-height:76px;
+
+    border:0;
+    background:transparent;
+    color:var(--text);
+
+    padding:15px 17px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    gap:12px;
+
+    cursor:pointer;
+    font-family:inherit;
+    text-align:right;
+}
+
+.lesson-title{
+    display:flex;
+    align-items:center;
+    gap:13px;
+}
+
+.lesson-number{
+    width:45px;
+    height:45px;
+
+    flex-shrink:0;
+
+    border-radius:14px;
+
+    display:grid;
+    place-items:center;
+
+    color:var(--cream);
+
+    font-size:15px;
+    font-weight:bold;
+
+    background:
+        linear-gradient(
+            135deg,
             var(--midnight),
+            var(--navy-light)
+        );
+
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.15);
+}
+
+.lesson-number i{
+    font-size:16px;
+}
+
+.lesson-name{
+    font-size:16px;
+    font-weight:800;
+}
+
+.lesson-count{
+    display:block;
+    color:var(--text-soft);
+    font-size:11px;
+    margin-top:4px;
+}
+
+.arrow{
+    width:31px;
+    height:31px;
+
+    display:grid;
+    place-items:center;
+
+    flex-shrink:0;
+
+    border-radius:10px;
+
+    color:var(--gold);
+
+    background:rgba(185,139,69,.1);
+
+    transition:transform .3s ease;
+
+    font-size:13px;
+}
+
+.lesson.active .arrow{
+    transform:rotate(180deg);
+}
+
+/* ================= NOTES ================= */
+
+.notes{
+    max-height:0;
+    overflow:hidden;
+    transition:max-height .4s ease;
+}
+
+.notes-inner{
+    padding:0 14px 14px;
+}
+
+.note{
+    width:100%;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    gap:12px;
+
+    padding:13px 14px;
+    margin-top:8px;
+
+    border-radius:15px;
+    border:1px solid var(--border);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,.13),
+            rgba(185,139,69,.08)
+        );
+
+    color:var(--text);
+
+    cursor:pointer;
+    transition:.25s ease;
+
+    text-align:right;
+    font-family:inherit;
+}
+
+.note:hover{
+    transform:translateX(-3px);
+
+    border-color:rgba(185,139,69,.4);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(185,139,69,.14),
+            rgba(29,60,96,.1)
+        );
+}
+
+.note-left{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.note-icon{
+    width:35px;
+    height:35px;
+
+    display:grid;
+    place-items:center;
+
+    border-radius:11px;
+
+    color:var(--gold-light);
+
+    background:rgba(185,139,69,.12);
+
+    font-size:14px;
+}
+
+.note-text{
+    font-size:13px;
+    font-weight:700;
+}
+
+.open-icon{
+    color:var(--text-soft);
+    font-size:12px;
+}
+
+/* ================= MODAL ================= */
+
+.modal{
+    position:fixed;
+    inset:0;
+    z-index:1000;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    padding:20px;
+
+    background:rgba(3,10,18,.65);
+
+    backdrop-filter:blur(10px);
+    -webkit-backdrop-filter:blur(10px);
+
+    opacity:0;
+    visibility:hidden;
+
+    transition:.3s ease;
+}
+
+.modal.show{
+    opacity:1;
+    visibility:visible;
+}
+
+.modal-box{
+    width:min(430px,100%);
+
+    padding:32px;
+
+    text-align:center;
+
+    border-radius:28px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(19,43,73,.95),
+            rgba(11,29,51,.97)
+        );
+
+    border:1px solid rgba(214,176,106,.25);
+
+    box-shadow:
+        0 30px 100px rgba(0,0,0,.45);
+
+    transform:scale(.88) translateY(20px);
+
+    transition:.35s cubic-bezier(.2,.8,.2,1);
+
+    position:relative;
+}
+
+.modal.show .modal-box{
+    transform:scale(1) translateY(0);
+}
+
+.close-btn{
+    position:absolute;
+    top:13px;
+    left:13px;
+
+    width:38px;
+    height:38px;
+
+    border:1px solid rgba(255,255,255,.12);
+
+    border-radius:12px;
+
+    background:rgba(255,255,255,.07);
+
+    color:#fff;
+
+    cursor:pointer;
+
+    font-size:18px;
+
+    transition:.2s;
+}
+
+.close-btn:hover{
+    background:rgba(185,139,69,.25);
+    transform:rotate(90deg);
+}
+
+.download-icon{
+    width:90px;
+    height:90px;
+
+    margin:0 auto 20px;
+
+    border-radius:27px;
+
+    display:grid;
+    place-items:center;
+
+    font-size:32px;
+
+    color:var(--cream);
+
+    background:
+        linear-gradient(
+            135deg,
             var(--gold),
             var(--navy-light)
         );
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
-    }
 
-    body.dark .hero h2 {
-        background: linear-gradient(
-            90deg,
-            var(--cream),
-            var(--gold-light),
-            #8da7c5
+    box-shadow:
+        0 15px 35px rgba(185,139,69,.22),
+        inset 0 1px 0 rgba(255,255,255,.2);
+}
+
+.modal h3{
+    color:#fff;
+    font-size:21px;
+    margin-bottom:10px;
+}
+
+.modal p{
+    color:#b8c2ce;
+    font-size:13px;
+    line-height:1.9;
+    margin-bottom:24px;
+}
+
+.download-btn{
+    width:100%;
+    min-height:53px;
+
+    border:0;
+    border-radius:16px;
+
+    color:#fff;
+
+    font-family:inherit;
+    font-size:15px;
+    font-weight:bold;
+
+    cursor:pointer;
+    text-decoration:none;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    gap:9px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--gold),
+            #8d6832,
+            var(--navy-light)
         );
-        -webkit-background-clip: text;
-        background-clip: text;
+
+    box-shadow:
+        0 12px 30px rgba(185,139,69,.2);
+
+    transition:.25s ease;
+}
+
+.download-btn:hover{
+    transform:translateY(-2px);
+    filter:brightness(1.1);
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+    text-align:center;
+    color:var(--text-soft);
+    font-size:11px;
+    padding:5px 0 30px;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:900px){
+
+    .lessons-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+@media(max-width:620px){
+
+    .container{
+        width:min(100% - 20px,500px);
     }
 
-    .hero p {
-        max-width: 650px;
-        margin: 15px auto 0;
-        color: var(--text-soft);
-        line-height: 2;
-        font-size: 14px;
+    header{
+        padding-top:12px;
     }
 
-    /* Grid */
-    .lessons-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 18px;
-        padding-bottom: 60px;
+    .header-glass{
+        min-height:64px;
+        border-radius:18px;
     }
 
-    .lesson {
-        border: 1px solid var(--border);
-        border-radius: 23px;
-        background: var(--card);
-        backdrop-filter: blur(18px);
-        -webkit-backdrop-filter: blur(18px);
-        box-shadow: var(--shadow);
-        overflow: hidden;
-        transition: .3s ease;
+    .header-logo{
+        width:50px;
+        height:50px;
     }
 
-    .lesson:hover {
-        transform: translateY(-3px);
-        border-color: rgba(185,139,69,.3);
+    .header-logo img{
+        width:50px;
+        height:50px;
     }
 
-    .lesson-header {
-        width: 100%;
-        min-height: 76px;
-        border: 0;
-        background: transparent;
-        color: var(--text);
-        padding: 15px 17px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 12px;
-        cursor: pointer;
-        font-family: inherit;
-        text-align: right;
+    .header-name{
+        font-size:13px;
     }
 
-    .lesson-title {
-        display: flex;
-        align-items: center;
-        gap: 13px;
+    .header-subtitle{
+        font-size:9px;
     }
 
-    .lesson-number {
-        width: 45px;
-        height: 45px;
-        flex-shrink: 0;
-        border-radius: 14px;
-        display: grid;
-        place-items: center;
-        color: var(--cream);
-        font-size: 17px;
-        font-weight: bold;
-        background:
-            linear-gradient(135deg, var(--midnight), var(--navy-light));
-        box-shadow: inset 0 1px 0 rgba(255,255,255,.15);
+    .theme-btn{
+        width:41px;
+        height:41px;
+        border-radius:13px;
+        font-size:15px;
     }
 
-    .lesson-name {
-        font-size: 16px;
-        font-weight: 800;
+    .hero{
+        padding:48px 5px 28px;
     }
 
-    .lesson-count {
-        display: block;
-        color: var(--text-soft);
-        font-size: 11px;
-        margin-top: 4px;
+    .hero h2{
+        font-size:29px;
+        letter-spacing:-.8px;
     }
 
-    .arrow {
-        width: 31px;
-        height: 31px;
-        display: grid;
-        place-items: center;
-        border-radius: 10px;
-        color: var(--gold);
-        background: rgba(185,139,69,.1);
-        transition: transform .3s ease;
-        font-size: 16px;
+    .hero p{
+        font-size:11px;
+        line-height:2;
+        padding:0 8px;
     }
 
-    .lesson.active .arrow {
-        transform: rotate(180deg);
+    .lessons-grid{
+        grid-template-columns:1fr;
+        gap:12px;
     }
 
-    .notes {
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height .4s ease;
+    .lesson{
+        border-radius:19px;
     }
 
-    .notes-inner {
-        padding: 0 14px 14px;
+    .lesson-header{
+        min-height:70px;
     }
 
-    .note {
-        width: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 12px;
-        padding: 13px 14px;
-        margin-top: 8px;
-        border-radius: 15px;
-        border: 1px solid var(--border);
-        background:
-            linear-gradient(
-                135deg,
-                rgba(255,255,255,.13),
-                rgba(185,139,69,.08)
-            );
-        color: var(--text);
-        cursor: pointer;
-        transition: .25s ease;
-        text-align: right;
-        font-family: inherit;
+    .modal-box{
+        padding:29px 22px 25px;
     }
+}
 
-    .note:hover {
-        transform: translateX(-3px);
-        border-color: rgba(185,139,69,.4);
-        background:
-            linear-gradient(
-                135deg,
-                rgba(185,139,69,.14),
-                rgba(29,60,96,.1)
-            );
+.site-footer{
+    text-align:center;
+    color:var(--text-soft);
+    font-size:11px;
+    line-height:1.8;
+    padding:5px 0 30px;
+}
+
+.site-footer div + div{
+    margin-top:2px;
+}
+
+@media(prefers-reduced-motion:reduce){
+
+    *,
+    *::before,
+    *::after{
+        animation-duration:.01ms !important;
+        transition-duration:.01ms !important;
     }
-
-    .note-left {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-    }
-
-    .note-icon {
-        width: 35px;
-        height: 35px;
-        display: grid;
-        place-items: center;
-        border-radius: 11px;
-        color: var(--gold-light);
-        background: rgba(185,139,69,.12);
-        font-size: 17px;
-    }
-
-    .note-text {
-        font-size: 13px;
-        font-weight: 700;
-    }
-
-    .open-icon {
-        color: var(--text-soft);
-        font-size: 14px;
-    }
-
-    /* Modal */
-    .modal {
-        position: fixed;
-        inset: 0;
-        z-index: 1000;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 20px;
-        background: rgba(3,10,18,.65);
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
-        opacity: 0;
-        visibility: hidden;
-        transition: .3s ease;
-    }
-
-    .modal.show {
-        opacity: 1;
-        visibility: visible;
-    }
-
-    .modal-box {
-        width: min(430px, 100%);
-        padding: 32px;
-        text-align: center;
-        border-radius: 28px;
-        background:
-            linear-gradient(
-                145deg,
-                rgba(19,43,73,.95),
-                rgba(11,29,51,.97)
-            );
-        border: 1px solid rgba(214,176,106,.25);
-        box-shadow: 0 30px 100px rgba(0,0,0,.45);
-        transform: scale(.88) translateY(20px);
-        transition: .35s cubic-bezier(.2,.8,.2,1);
-        position: relative;
-    }
-
-    .modal.show .modal-box {
-        transform: scale(1) translateY(0);
-    }
-
-    .close-btn {
-        position: absolute;
-        top: 13px;
-        left: 13px;
-        width: 38px;
-        height: 38px;
-        border: 1px solid rgba(255,255,255,.12);
-        border-radius: 12px;
-        background: rgba(255,255,255,.07);
-        color: #fff;
-        cursor: pointer;
-        font-size: 20px;
-        transition: .2s;
-    }
-
-    .close-btn:hover {
-        background: rgba(185,139,69,.25);
-        transform: rotate(90deg);
-    }
-
-    .download-icon {
-        width: 90px;
-        height: 90px;
-        margin: 0 auto 20px;
-        border-radius: 27px;
-        display: grid;
-        place-items: center;
-        font-size: 42px;
-        color: var(--cream);
-        background:
-            linear-gradient(135deg, var(--gold), var(--navy-light));
-        box-shadow:
-            0 15px 35px rgba(185,139,69,.22),
-            inset 0 1px 0 rgba(255,255,255,.2);
-    }
-
-    .modal h3 {
-        color: #fff;
-        font-size: 21px;
-        margin-bottom: 10px;
-    }
-
-    .modal p {
-        color: #b8c2ce;
-        font-size: 13px;
-        line-height: 1.9;
-        margin-bottom: 24px;
-    }
-
-    .download-btn {
-        width: 100%;
-        min-height: 53px;
-        border: 0;
-        border-radius: 16px;
-        color: #fff;
-        font-family: inherit;
-        font-size: 15px;
-        font-weight: bold;
-        cursor: pointer;
-        text-decoration: none;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 9px;
-        background:
-            linear-gradient(
-                135deg,
-                var(--gold),
-                #8d6832,
-                var(--navy-light)
-            );
-        box-shadow: 0 12px 30px rgba(185,139,69,.2);
-        transition: .25s ease;
-    }
-
-    .download-btn:hover {
-        transform: translateY(-2px);
-        filter: brightness(1.1);
-    }
-
-    /* Footer */
-    footer {
-        text-align: center;
-        color: var(--text-soft);
-        font-size: 11px;
-        padding: 5px 0 30px;
-    }
-
-    /* Responsive */
-    @media (max-width: 900px) {
-        .lessons-grid {
-            grid-template-columns: repeat(2, 1fr);
-        }
-    }
-
-    @media (max-width: 620px) {
-        .container {
-            width: min(100% - 20px, 500px);
-        }
-
-        header {
-            padding-top: 15px;
-        }
-
-        .topbar {
-            gap: 10px;
-        }
-
-        .logo {
-            width: 48px;
-            height: 48px;
-            border-radius: 14px;
-        }
-
-        .brand h1 {
-            font-size: 18px;
-        }
-
-        .brand p {
-            font-size: 10px;
-        }
-
-        .theme-btn {
-            width: 43px;
-            height: 43px;
-        }
-
-        .hero {
-            padding: 35px 5px 25px;
-        }
-
-        .hero h2 {
-            font-size: 28px;
-        }
-
-        .hero p {
-            font-size: 12px;
-        }
-
-        .lessons-grid {
-            grid-template-columns: 1fr;
-            gap: 12px;
-        }
-
-        .lesson {
-            border-radius: 19px;
-        }
-
-        .lesson-header {
-            min-height: 70px;
-        }
-
-        .modal-box {
-            padding: 29px 22px 25px;
-        }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-        *,
-        *::before,
-        *::after {
-            animation-duration: .01ms !important;
-            transition-duration: .01ms !important;
-        }
-    }
+}
 </style>
-
 
 </head>
 
 <body>
 
-
 <header>
     <div class="container">
-        <div class="topbar">
 
-            <div class="brand">
-                <div class="logo">۴۱</div>
 
-                <div>
-                    <h1>جزوات دانش‌کده ۴۱</h1>
-                    <p>مرجع دسترسی سریع به جزوات درسی</p>
-                </div>
+    <div class="header-glass">
+
+        <div class="header-brand">
+
+            <div class="header-logo">
+                <img src="logo.png" alt="لوگوی دانش‌کده ۴۱">
             </div>
 
-            <button
-                class="glass-btn theme-btn"
-                id="themeToggle"
-                aria-label="تغییر تم"
-                title="تغییر تم">
-                ☀️
-            </button>
+            <div class="header-info">
+                <span class="header-name">دانش‌کده ۴۱</span>
+                <span class="header-subtitle">
+                    همه جزوه‌ها، یکجا و مرتب
+                </span>
+            </div>
 
         </div>
-    </div>
-</header>
-
-
-<main class="container">
-
-    <section class="hero">
-
-        <h2>جزوات دانش‌کده ۴۱</h2>
-
-    </section>
-
-
-    <section class="lessons-grid" id="lessonsGrid">
-        <!-- درس‌ها توسط JavaScript ساخته می‌شوند -->
-    </section>
-
-</main>
-
-
-<footer>
-    جزوات دانش‌کده ۴۱
-</footer>
-
-
-<!-- Modal -->
-<div class="modal" id="downloadModal">
-
-    <div class="modal-box">
 
         <button
-            class="close-btn"
-            id="closeModal"
-            aria-label="بستن">
-            ×
+            class="glass-btn theme-btn"
+            id="themeToggle"
+            aria-label="تغییر تم"
+            title="تغییر تم"
+        >
+            <i class="fas fa-moon"></i>
         </button>
-
-        <div class="download-icon">
-            ↓
-        </div>
-
-        <h3 id="modalTitle">جزوه</h3>
-
-        <p>
-            برای دریافت فایل جزوه، روی دکمه دانلود بزنید.
-        </p>
-
-        <a
-            class="download-btn"
-            id="downloadLink"
-            href="#"
-            download>
-            <span>⬇</span>
-            دانلود جزوه
-        </a>
 
     </div>
 
 </div>
 
 
+</header>
+
+<main class="container">
+
+
+<section class="hero">
+
+    <h2>جزوات دانش‌کده ۴۱</h2>
+
+    <p>
+        درس موردنظرت رو انتخاب کن و جزوه‌ای که می‌خوای
+        رو سریع و راحت پیدا و دانلود کن.
+    </p>
+
+</section>
+
+
+<section class="lessons-grid" id="lessonsGrid">
+    <!-- درس‌ها توسط JavaScript ساخته می‌شوند -->
+</section>
+
+
+</main>
+
+<footer class="site-footer">
+    <div>طراحی و توسعه: دانیال ایمان‌پور</div>
+    <div>سال ۱۴۰۵ | سال تحصیلی نهم</div>
+</footer>
+
+<!-- ================= MODAL ================= -->
+
+<div class="modal" id="downloadModal">
+
+
+<div class="modal-box">
+
+    <button
+        class="close-btn"
+        id="closeModal"
+        aria-label="بستن"
+    >
+        <i class="fas fa-xmark"></i>
+    </button>
+
+    <div class="download-icon">
+        <i class="fas fa-file-arrow-down"></i>
+    </div>
+
+    <h3 id="modalTitle">جزوه</h3>
+
+    <p>
+        برای دریافت فایل جزوه، روی دکمه دانلود بزنید.
+    </p>
+
+    <a
+        class="download-btn"
+        id="downloadLink"
+        href="#"
+        download
+    >
+        <i class="fas fa-download"></i>
+        دانلود جزوه
+    </a>
+
+</div>
+
+
+</div>
+
 <script>
 
-    /*
-    ============================================================
-    تنظیم لینک جزوه‌ها
-    ============================================================
+/* ================= LESSON DATA ================= */
 
-    برای هر جزوه، مقدار url را به آدرس واقعی فایل تغییر بده.
+const lessons = [
 
-    مثال:
-    url: "https://example.com/note.pdf"
+    {
+        id:1,
+        name:"درس شماره ۱",
+        notes:[
+            {
+                name:"جزوه شماره ۱",
+                url:"lessons/lesson-1/notes-1.pdf"
+            },
+        ]
+    },
 
-    یا اگر فایل‌ها را داخل سایت گذاشتی:
-    url: "lessons/lesson-1/notes-1.pdf"
+    {
+        id:2,
+        name:"درس شماره ۲",
+        notes:[
+            {
+                name:"جزوه شماره ۱",
+                url:"lessons/lesson-1/notes-1.pdf"
+            },
+        ]
+    },
 
-    ============================================================
-    */
+    {
+        id:3,
+        name:"درس شماره ۳",
+        notes:[
+            {
+                name:"جزوه شماره ۱",
+                url:"lessons/lesson-1/notes-1.pdf"
+            },
+        ]
+    },
 
-    const lessons = [
-        {
-            id: 1,
-            name: "درس شماره ۱",
-            notes: [
-                { name: "جزوه شماره ۱", url: "lessons/lesson-1/notes-1.pdf" },
-                { name: "جزوه شماره ۲", url: "lessons/lesson-1/notes-2.pdf" },
-                { name: "جزوه شماره ۳", url: "lessons/lesson-1/notes-3.pdf" }
-            ]
-        },
-        {
-            id: 2,
-            name: "درس شماره ۲",
-            notes: [
-                { name: "جزوه شماره ۱", url: "lessons/lesson-2/notes-1.pdf" },
-                { name: "جزوه شماره ۲", url: "lessons/lesson-2/notes-2.pdf" },
-                { name: "جزوه شماره ۳", url: "lessons/lesson-2/notes-3.pdf" }
-            ]
-        },
-        {
-            id: 3,
-            name: "درس شماره ۳",
-            notes: [
-                { name: "جزوه شماره ۱", url: "lessons/lesson-3/notes-1.pdf" },
-                { name: "جزوه شماره ۲", url: "lessons/lesson-3/notes-2.pdf" },
-                { name: "جزوه شماره ۳", url: "lessons/lesson-3/notes-3.pdf" }
-            ]
-        },
-        {
-            id: 4,
-            name: "درس شماره ۴",
-            notes: [
-                { name: "جزوه شماره ۱", url: "lessons/lesson-4/notes-1.pdf" },
-                { name: "جزوه شماره ۲", url: "lessons/lesson-4/notes-2.pdf" },
-                { name: "جزوه شماره ۳", url: "lessons/lesson-4/notes-3.pdf" }
-            ]
-        },
-        {
-            id: 5,
-            name: "درس شماره ۵",
-            notes: [
-                { name: "جزوه شماره ۱", url: "lessons/lesson-5/notes-1.pdf" },
-                { name: "جزوه شماره ۲", url: "lessons/lesson-5/notes-2.pdf" },
-                { name: "جزوه شماره ۳", url: "lessons/lesson-5/notes-3.pdf" }
-            ]
-        },
-        {
-            id: 6,
-            name: "درس شماره ۶",
-            notes: [
-                { name: "جزوه شماره ۱", url: "lessons/lesson-6/notes-1.pdf" },
-                { name: "جزوه شماره ۲", url: "lessons/lesson-6/notes-2.pdf" },
-                { name: "جزوه شماره ۳", url: "lessons/lesson-6/notes-3.pdf" }
-            ]
-        },
-        {
-            id: 7,
-            name: "درس شماره ۷",
-            notes: [
-                { name: "جزوه شماره ۱", url: "lessons/lesson-7/notes-1.pdf" },
-                { name: "جزوه شماره ۲", url: "lessons/lesson-7/notes-2.pdf" },
-                { name: "جزوه شماره ۳", url: "lessons/lesson-7/notes-3.pdf" }
-            ]
-        },
-        {
-            id: 8,
-            name: "درس شماره ۸",
-            notes: [
-                { name: "جزوه شماره ۱", url: "lessons/lesson-8/notes-1.pdf" },
-                { name: "جزوه شماره ۲", url: "lessons/lesson-8/notes-2.pdf" },
-                { name: "جزوه شماره ۳", url: "lessons/lesson-8/notes-3.pdf" }
-            ]
-        },
-        {
-            id: 9,
-            name: "درس شماره ۹",
-            notes: [
-                { name: "جزوه شماره ۱", url: "lessons/lesson-9/notes-1.pdf" },
-                { name: "جزوه شماره ۲", url: "lessons/lesson-9/notes-2.pdf" },
-                { name: "جزوه شماره ۳", url: "lessons/lesson-9/notes-3.pdf" }
-            ]
-        },
-        {
-            id: 10,
-            name: "درس شماره ۱۰",
-            notes: [
-                { name: "جزوه شماره ۱", url: "lessons/lesson-10/notes-1.pdf" },
-                { name: "جزوه شماره ۲", url: "lessons/lesson-10/notes-2.pdf" },
-                { name: "جزوه شماره ۳", url: "lessons/lesson-10/notes-3.pdf" }
-            ]
-        }
-    ];
+];
 
 
-    const grid = document.getElementById("lessonsGrid");
+/* ================= CREATE LESSONS ================= */
 
+const grid = document.getElementById("lessonsGrid");
 
-    /* ساخت کارت درس‌ها */
+lessons.forEach(lesson => {
 
-    lessons.forEach(lesson => {
+    const article = document.createElement("article");
 
-        const article = document.createElement("article");
-        article.className = "lesson";
+    article.className = "lesson";
 
-        article.innerHTML = `
-            <button class="lesson-header">
-                <div class="lesson-title">
+    article.innerHTML = `
 
-                    <div class="lesson-number">
-                        ${lesson.id}
-                    </div>
+        <button class="lesson-header">
 
-                    <div>
-                        <div class="lesson-name">
-                            ${lesson.name}
-                        </div>
+            <div class="lesson-title">
 
-                        <span class="lesson-count">
-                            ۳ جزوه
-                        </span>
-                    </div>
-
+                <div class="lesson-number">
+                    <i class="fas fa-book-open"></i>
                 </div>
 
-                <span class="arrow">⌄</span>
-            </button>
+                <div>
+                    <div class="lesson-name">
+                        ${lesson.name}
+                    </div>
 
-            <div class="notes">
-
-                <div class="notes-inner">
-
-                    ${lesson.notes.map((note, index) => `
-                        <button
-                            class="note"
-                            data-lesson="${lesson.id}"
-                            data-note="${index}"
-                        >
-
-                            <span class="note-left">
-
-                                <span class="note-icon">
-                                    📄
-                                </span>
-
-                                <span class="note-text">
-                                    ${note.name}
-                                </span>
-
-                            </span>
-
-                            <span class="open-icon">
-                                ↗
-                            </span>
-
-                        </button>
-                    `).join("")}
-
+                    <span class="lesson-count">
+                        ${lesson.notes.length} جزوه
+                    </span>
                 </div>
 
             </div>
-        `;
 
-        grid.appendChild(article);
-    });
+            <div class="arrow">
+                <i class="fas fa-chevron-down"></i>
+            </div>
 
-
-    /* آکاردئون */
-
-    document.querySelectorAll(".lesson-header").forEach(header => {
-
-        header.addEventListener("click", () => {
-
-            const lesson = header.parentElement;
-            const notes = lesson.querySelector(".notes");
-
-            const isOpen = lesson.classList.contains("active");
+        </button>
 
 
-            /* بستن همه */
+        <div class="notes">
 
-            document.querySelectorAll(".lesson.active").forEach(item => {
+            <div class="notes-inner">
 
-                item.classList.remove("active");
+                ${lesson.notes.map((note,index) => `
 
-                item.querySelector(".notes").style.maxHeight = null;
+                    <button
+                        class="note"
+                        data-lesson="${lesson.id}"
+                        data-note="${index}"
+                    >
 
-            });
+                        <div class="note-left">
+
+                            <div class="note-icon">
+                                <i class="fas fa-file-lines"></i>
+                            </div>
+
+                            <span class="note-text">
+                                ${note.name}
+                            </span>
+
+                        </div>
+
+                        <span class="open-icon">
+                            <i class="fas fa-arrow-left"></i>
+                        </span>
+
+                    </button>
+
+                `).join("")}
+
+            </div>
+
+        </div>
+
+    `;
+
+    grid.appendChild(article);
+
+});
 
 
-            /* باز کردن مورد انتخاب‌شده */
+/* ================= ACCORDION ================= */
 
-            if (!isOpen) {
+document.querySelectorAll(".lesson-header").forEach(header => {
 
-                lesson.classList.add("active");
+    header.addEventListener("click", () => {
 
-                notes.style.maxHeight = notes.scrollHeight + "px";
+        const lesson = header.parentElement;
+        const notes = lesson.querySelector(".notes");
 
-            }
+        const isOpen = lesson.classList.contains("active");
+
+        document.querySelectorAll(".lesson.active").forEach(item => {
+
+            item.classList.remove("active");
+
+            item.querySelector(".notes").style.maxHeight = null;
 
         });
 
+        if(!isOpen){
+
+            lesson.classList.add("active");
+
+            notes.style.maxHeight =
+                notes.scrollHeight + "px";
+
+        }
+
     });
 
-
-    /* Modal */
-
-    const modal = document.getElementById("downloadModal");
-    const closeModal = document.getElementById("closeModal");
-    const modalTitle = document.getElementById("modalTitle");
-    const downloadLink = document.getElementById("downloadLink");
+});
 
 
-    document.querySelectorAll(".note").forEach(note => {
+/* ================= MODAL ================= */
 
-        note.addEventListener("click", () => {
+const modal = document.getElementById("downloadModal");
+const closeModal = document.getElementById("closeModal");
+const modalTitle = document.getElementById("modalTitle");
+const downloadLink = document.getElementById("downloadLink");
 
-            const lessonId = Number(note.dataset.lesson);
-            const noteIndex = Number(note.dataset.note);
 
-            const selectedLesson = lessons.find(
+document.querySelectorAll(".note").forEach(note => {
+
+    note.addEventListener("click", () => {
+
+        const lessonId =
+            Number(note.dataset.lesson);
+
+        const noteIndex =
+            Number(note.dataset.note);
+
+        const selectedLesson =
+            lessons.find(
                 lesson => lesson.id === lessonId
             );
 
-            const selectedNote = selectedLesson.notes[noteIndex];
+        const selectedNote =
+            selectedLesson.notes[noteIndex];
 
 
-            modalTitle.textContent =
-                `${selectedLesson.name} — ${selectedNote.name}`;
+        modalTitle.textContent =
+            `${selectedLesson.name} — ${selectedNote.name}`;
 
-            downloadLink.href = selectedNote.url;
+        downloadLink.href =
+            selectedNote.url;
 
-            modal.classList.add("show");
+        modal.classList.add("show");
 
-            document.body.style.overflow = "hidden";
-
-        });
-
-    });
-
-
-    function closeDownloadModal() {
-
-        modal.classList.remove("show");
-
-        document.body.style.overflow = "";
-
-    }
-
-
-    closeModal.addEventListener("click", closeDownloadModal);
-
-
-    /* کلیک بیرون مودال */
-
-    modal.addEventListener("click", event => {
-
-        if (event.target === modal) {
-            closeDownloadModal();
-        }
+        document.body.style.overflow = "hidden";
 
     });
 
-
-    /* کلید Escape */
-
-    document.addEventListener("keydown", event => {
-
-        if (event.key === "Escape") {
-            closeDownloadModal();
-        }
-
-    });
+});
 
 
-    /* Dark / Light Mode */
+function closeDownloadModal(){
 
-    const themeToggle = document.getElementById("themeToggle");
+    modal.classList.remove("show");
+
+    document.body.style.overflow = "";
+
+}
 
 
-    function updateThemeIcon() {
+closeModal.addEventListener(
+    "click",
+    closeDownloadModal
+);
 
-        themeToggle.textContent =
-            document.body.classList.contains("dark")
-                ? "☀️"
-                : "🌙";
+
+modal.addEventListener("click", event => {
+
+    if(event.target === modal){
+
+        closeDownloadModal();
 
     }
 
+});
 
-    const savedTheme = localStorage.getItem("theme");
 
+document.addEventListener("keydown", event => {
 
-    if (savedTheme === "dark") {
-        document.body.classList.add("dark");
+    if(event.key === "Escape"){
+
+        closeDownloadModal();
+
     }
 
+});
+
+
+/* ================= THEME ================= */
+
+const themeToggle =
+    document.getElementById("themeToggle");
+
+
+function updateThemeIcon(){
+
+    const icon =
+        themeToggle.querySelector("i");
+
+    icon.className =
+        document.body.classList.contains("dark")
+            ? "fas fa-sun"
+            : "fas fa-moon";
+
+}
+
+
+const savedTheme =
+    localStorage.getItem("theme");
+
+
+if(savedTheme === "dark"){
+
+    document.body.classList.add("dark");
+
+}
+
+
+updateThemeIcon();
+
+
+themeToggle.addEventListener("click", () => {
+
+    document.body.classList.toggle("dark");
+
+    const isDark =
+        document.body.classList.contains("dark");
+
+    localStorage.setItem(
+        "theme",
+        isDark ? "dark" : "light"
+    );
 
     updateThemeIcon();
 
-
-    themeToggle.addEventListener("click", () => {
-
-        document.body.classList.toggle("dark");
-
-        const isDark =
-            document.body.classList.contains("dark");
-
-        localStorage.setItem(
-            "theme",
-            isDark ? "dark" : "light"
-        );
-
-        updateThemeIcon();
-
-    });
+});
 
 </script>
-
 
 </body>
 </html>
