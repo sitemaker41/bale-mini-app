@@ -38,7 +38,7 @@ export default async function handler(req, res) {
   }
 
   if (text === "/help") {
-    const helpText = `📚 راهنمای جزوه‌رسان | دانش‌کده۴۱
+    const helpText = `*🎓راهنمای جزوه‌رسان | دانش‌کده۴۱🎓*
 
 🤖 درباره ربات:
 جزوه‌رسان برای دسترسی سریع و مرتب به جزوه‌های درسی ساخته شده است.
@@ -63,7 +63,7 @@ export default async function handler(req, res) {
 
 💡 اگر مشکلی در دریافت یا دانلود جزوه داشتی، اطلاع بده تا بررسی بشه.
 
-دانش‌کده ۴۱ | جزوات، یکجا و مرتب 📚`;
+*🎓دانش‌کده۴۱ | دوره۴۱علامه‌حلی🎓*`;
 
     await fetch(
       `https://tapi.bale.ai/bot${token}/sendMessage`,
