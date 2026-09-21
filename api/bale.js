@@ -12,6 +12,7 @@ export default async function handler(req, res) {
   const chatId = message?.chat?.id;
   const text = message?.text;
 
+  console.log("HAS TOKEN:", !!token);
   console.log("CHAT ID:", chatId);
   console.log("TEXT:", text);
 
