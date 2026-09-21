@@ -37,16 +37,6 @@ export default async function handler(req, res) {
         body: JSON.stringify({
           chat_id: chatId,
           text: welcomeText,
-          reply_markup: {
-            inline_keyboard: [
-              [
-                {
-                  text: "جزوات اینجاست 📚",
-                  url: "https://bale-mini-app-few3.vercel.app/"
-                }
-              ]
-            ]
-          }
         })
       }
     );
