@@ -1347,18 +1347,17 @@
        DOWNLOAD PDF
     ========================= */
 
-    downloadBtn.addEventListener(
-        "click",
-        () => {
-            if (!currentPdfUrl) return;
+    downloadBtn.addEventListener("click", () => {
+    if (!currentPdfUrl) return;
 
-            const downloadUrl =
-            `/api/download?file=${encodeURIComponent(currentPdfUrl)}`;
+    const url = new URL(
+        currentPdfUrl,
+        window.location.href
+    ).href;
 
-            window.location.href = downloadUrl;
-        }
-    );
-
+    window.open(url, "_blank");
+    });
+    
     /* =========================
        CLOSE MODAL
     ========================= */
