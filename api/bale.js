@@ -18,12 +18,12 @@ export default async function handler(req, res) {
         {
           id: "n1",
           name: "جزوه ۱",
-          url: "https://bale-mini-app-few3.vercel.app/lessons/lesson-1/Be_Zoodi....pdf"
+          url: "https://bale-mini-app-few3.vercel.app/Lessons/Lesson1/Jozve1.pdf"
         },
         {
           id: "n2",
           name: "جزوه ۲",
-          url: "https://bale-mini-app-few3.vercel.app/lessons/lesson-1/Be_Zoodi....pdf"
+          url: "https://bale-mini-app-few3.vercel.app/Lessons/Lesson1/Jozve2.pdf"
         }
       ]
     },
@@ -34,12 +34,12 @@ export default async function handler(req, res) {
         {
           id: "n1",
           name: "جزوه ۱",
-          url: "https://bale-mini-app-few3.vercel.app/lessons/lesson-2/Be_Zoodi....pdf"
+          url: "https://bale-mini-app-few3.vercel.app/Lessons/Lesson2/Jozve1.pdf"
         },
         {
           id: "n2",
           name: "جزوه ۲",
-          url: "https://bale-mini-app-few3.vercel.app/lessons/lesson-2/Be_Zoodi....pdf"
+          url: "https://bale-mini-app-few3.vercel.app/Lessons/Lesson2/Jozve2.pdf"
         }
       ]
     }
