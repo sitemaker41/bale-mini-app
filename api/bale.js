@@ -13,36 +13,15 @@ export default async function handler(req, res) {
   const lessons = [
     {
       id: "l1",
-      name: "درس شماره ۱",
+      name: "به زودی...",
       notes: [
         {
           id: "n1",
-          name: "جزوه ۱",
+          name: "به زودی...",
           url: "https://bale-mini-app-few3.vercel.app/Lessons/Lesson1/Jozve1.pdf"
         },
-        {
-          id: "n2",
-          name: "جزوه ۲",
-          url: "https://bale-mini-app-few3.vercel.app/Lessons/Lesson1/Jozve2.pdf"
-        }
       ]
     },
-    {
-      id: "l2",
-      name: "درس شماره ۲",
-      notes: [
-        {
-          id: "n1",
-          name: "جزوه ۱",
-          url: "https://bale-mini-app-few3.vercel.app/Lessons/Lesson2/Jozve1.pdf"
-        },
-        {
-          id: "n2",
-          name: "جزوه ۲",
-          url: "https://bale-mini-app-few3.vercel.app/Lessons/Lesson2/Jozve2.pdf"
-        }
-      ]
-    }
   ];
 
   async function api(method, body) {
