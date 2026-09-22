@@ -55,14 +55,18 @@
     }
 
     body {
-      font-family: Vazirmatn, Tahoma, sans-serif;
-      background:
+    font-family: Vazirmatn, Tahoma, sans-serif;
+    background:
         radial-gradient(circle at 15% 10%, rgba(185,139,69,.12), transparent 30%),
         radial-gradient(circle at 85% 20%, rgba(29,60,96,.10), transparent 30%),
         var(--bg);
-      color: var(--text);
-      min-height: 100vh;
-      transition: background .3s ease, color .3s ease;
+    color: var(--text);
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+
+    transition: background .3s ease, color .3s ease;
     }
 
     button {
@@ -158,9 +162,12 @@
     /* MAIN */
 
     main {
-      max-width: 1100px;
-      margin: auto;
-      padding: 25px 20px 40px;
+        width: 100%;
+        max-width: 1100px;
+        margin: auto;
+        padding: 25px 20px 40px;
+
+        flex: 1;
     }
 
     .hero {
@@ -375,17 +382,22 @@
     /* FOOTER */
 
     footer {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 20px 20px 35px;
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
 
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 15px;
+    padding: 20px 20px 25px;
 
-      color: var(--muted);
-      font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-direction: column;
+    gap: 6px;
+
+    color: var(--muted);
+    font-size: 12px;
+    text-align: center;
     }
 
     /* MODAL */
@@ -672,14 +684,6 @@
 
       .lessons {
         grid-template-columns: 1fr;
-      }
-
-      footer {
-        padding-left: 12px;
-        padding-right: 12px;
-
-        flex-direction: column;
-        text-align: center;
       }
 
       .modal {
@@ -1304,7 +1308,6 @@
           <div class="pdf-error">
 
             خطا در نمایش پیش‌نمایش PDF.<br>
-            لطفاً مطمئن شوید فایل PDF در مسیر مشخص‌شده قرار دارد.
 
           </div>
 
