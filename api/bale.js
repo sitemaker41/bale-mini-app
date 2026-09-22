@@ -18,7 +18,7 @@ export default async function handler(req, res) {
         {
           id: "n1",
           name: "به زودی...",
-          url: "https://bale-mini-app-few3.vercel.app/Lessons/Lesson1/Jozve1.pdf"
+          url: "https://bale-mini-app-few3.vercel.app/Lessons/Be_Zoodi/Be_Zoodi.pdf"
         },
       ]
     },
