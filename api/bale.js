@@ -9,22 +9,26 @@ export default async function handler(req, res) {
     const response = await fetch(
       `https://tapi.bale.ai/bot${token}/getMe`,
       {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        }
+        method: "POST"
       }
     );
 
     const result = await response.text();
 
     return res.status(200).send(
-      `HTTP STATUS: ${response.status}\n\nBALE RESPONSE:\n${result}`
+      `<pre>STATUS: ${response.status}
+
+BALE RESPONSE:
+${result}</pre>`
     );
 
   } catch (error) {
     return res.status(200).send(
-      `FETCH ERROR:\n${String(error)}\n\nCAUSE:\n${String(error?.cause || "")}`
+      `<pre>FETCH ERROR:
+${String(error)}
+
+CAUSE:
+${String(error?.cause || "")}</pre>`
     );
   }
 }
