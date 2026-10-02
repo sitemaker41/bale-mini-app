@@ -437,9 +437,7 @@ export default async function handler(req, res) {
 
     return `📚درس ${lesson.name}📚
 نویسنده : ${note.author}
-هفته ${weekNames[note.week] || note.week}
-
-📱● در دانش‌کده‌۴‌۱ با ما همراه باشید ●`;
+هفته ${weekNames[note.week] || note.week}`;
   }
 
   function lessonKeyboard() {
