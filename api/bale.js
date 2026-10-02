@@ -1,14 +1,11 @@
 export default async function handler(req, res) {
+  const token = process.env.BALE_BOT_TOKEN;
+
+  if (!token) {
+    return res.status(200).send("TOKEN MISSING");
+  }
+
   try {
-    const token = process.env.BALE_BOT_TOKEN;
-
-    if (!token) {
-      return res.status(200).json({
-        ok: false,
-        error: "BALE_BOT_TOKEN is missing"
-      });
-    }
-
     const response = await fetch(
       `https://tapi.bale.ai/bot${token}/getMe`,
       {
@@ -19,19 +16,15 @@ export default async function handler(req, res) {
       }
     );
 
-    const text = await response.text();
+    const result = await response.text();
 
-    return res.status(200).json({
-      ok: true,
-      status: response.status,
-      response: text
-    });
+    return res.status(200).send(
+      `HTTP STATUS: ${response.status}\n\nBALE RESPONSE:\n${result}`
+    );
 
   } catch (error) {
-    return res.status(500).json({
-      ok: false,
-      error: String(error),
-      cause: error?.cause ? String(error.cause) : null
-    });
+    return res.status(200).send(
+      `FETCH ERROR:\n${String(error)}\n\nCAUSE:\n${String(error?.cause || "")}`
+    );
   }
 }
