@@ -44,12 +44,7 @@ export default async function handler(req, res) {
   // ==========================================
   // جزوات
   //
-  // هر هفته فقط همین قسمت را آپدیت کن.
-  //
-  // fileId = شناسه فایل از کانال آرشیو
-  // lessonId = شناسه درس
-  // author = نام نویسنده
-  // week = شماره هفته
+  // هر هفته اطلاعات جدید را اینجا اضافه/جایگزین کن.
   // ==========================================
 
   const notes = [
@@ -63,31 +58,30 @@ export default async function handler(req, res) {
     }
 
     /*
-    نمونه برای اضافه کردن جزوه:
+    نمونه:
 
     {
-      id: "zist-1",
-      lessonId: "l1",
-      fileId: "FILE_ID_HERE",
-      author: "نبی‌گل",
+      id: "riazi-krimi",
+      lessonId: "l8",
+      fileId: "FILE_ID",
+      author: "کریمی",
       week: 1,
-      buttonName: "جزوه ۱"
+      buttonName: "ریاضی - کریمی"
     },
 
     {
-      id: "riazi-1",
-      lessonId: "l8",
-      fileId: "FILE_ID_HERE",
-      author: "ایمان‌پور",
+      id: "zist-nabigol",
+      lessonId: "l1",
+      fileId: "FILE_ID",
+      author: "نبی‌گل",
       week: 1,
-      buttonName: "جزوه ۱"
+      buttonName: "زیست - نبی‌گل"
     }
-
     */
   ];
 
   // ==========================================
-  // Bale API
+  // ارتباط با Bale
   // ==========================================
 
   async function api(method, body) {
@@ -116,8 +110,7 @@ export default async function handler(req, res) {
   }
 
   // ==========================================
-  // منوی درس‌ها
-  // دو به دو
+  // منوی درس‌ها - دو به دو
   // ==========================================
 
   function lessonKeyboard() {
@@ -175,10 +168,29 @@ export default async function handler(req, res) {
   }
 
   // ==========================================
-  // دریافت پیام
+  // دریافت فایل از کانال آرشیو
   // ==========================================
 
   const message = update?.message;
+
+  if (
+    message?.chat?.type === "channel" &&
+    message?.chat?.id === ARCHIVE_CHANNEL_ID &&
+    message?.document
+  ) {
+    const fileName = message.document.file_name || "بدون نام";
+    const fileId = message.document.file_id;
+
+    // فقط یک خط کوتاه برای کپی کردن
+    console.log(`NOTE|${fileName}|${fileId}`);
+
+    return res.status(200).json({ ok: true });
+  }
+
+  // ==========================================
+  // Callback Query
+  // ==========================================
+
   const callbackQuery = update?.callback_query;
 
   const chatId =
@@ -186,28 +198,6 @@ export default async function handler(req, res) {
     callbackQuery?.message?.chat?.id;
 
   if (!chatId) {
-    return res.status(200).json({ ok: true });
-  }
-
-  // ==========================================
-  // پیام جدید کانال آرشیو
-  //
-  // فعلاً فقط برای گرفتن اطلاعات فایل
-  // و نمایش در لاگ Vercel استفاده می‌شود.
-  // ==========================================
-
-  if (
-    message?.chat?.type === "channel" &&
-    message?.chat?.id === ARCHIVE_CHANNEL_ID &&
-    message?.document
-  ) {
-    console.log("========== ARCHIVE FILE ==========");
-    console.log("FILE NAME:", message.document.file_name);
-    console.log("FILE ID:", message.document.file_id);
-    console.log("CAPTION:", message.caption || "");
-    console.log("MESSAGE ID:", message.message_id);
-    console.log("===================================");
-
     return res.status(200).json({ ok: true });
   }
 
@@ -267,7 +257,7 @@ export default async function handler(req, res) {
     const callbackId = callbackQuery.id;
     const data = callbackQuery.data;
 
-    // حذف حالت Loading دکمه
+    // حذف Loading
     await api("answerCallbackQuery", {
       callback_query_id: callbackId
     });
@@ -346,12 +336,10 @@ export default async function handler(req, res) {
         return res.status(200).json({ ok: true });
       }
 
-      const caption = makeCaption(note, lesson);
-
       await api("sendDocument", {
         chat_id: chatId,
         document: note.fileId,
-        caption: caption
+        caption: makeCaption(note, lesson)
       });
 
       return res.status(200).json({ ok: true });
