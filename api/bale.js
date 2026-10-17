@@ -32,7 +32,7 @@ export default async function handler(req, res) {
   }
 
   if (message?.text === "/start") {
-    const text = `🛠️ ربات جزوه‌رسان | دانش‌کده۴۱
+    const text = `🛠️ ربات جزوه‌رسان | دانشکده۴۱
 
 سلام 👋
 
@@ -43,7 +43,7 @@ export default async function handler(req, res) {
 ⏳ لطفاً کمی صبر کنید...
 به‌زودی با نسخه‌ای بهتر و کامل‌تر برمی‌گردیم.
 
-🎓 دانش‌کده۴۱ | دوره۴۱ علامه‌حلی 🎓`;
+🎓 دانشکده۴۱ | دوره۴۱ علامه‌حلی 🎓`;
 
     await api("sendMessage", {
       chat_id: chatId,
@@ -60,7 +60,7 @@ export default async function handler(req, res) {
 
 جزوات و امکانات ربات پس از پایان به‌روزرسانی در دسترس خواهند بود. 📚
 
-🎓 دانش‌کده۴۱ | دوره۴۱ علامه‌حلی 🎓`
+🎓 دانشکده۴۱ | دوره۴۱ علامه‌حلی 🎓`
     });
 
     return res.status(200).json({ ok: true });
