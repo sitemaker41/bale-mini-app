@@ -185,8 +185,17 @@ export default async function handler(req, res) {
   }
 
   const update = req.body;
-  const message = update?.message || update?.channel_post;
+  const query = update?.callback_query;
 
+  if (query) {
+    const data = query.data || "";
+    const callbackChatId = query.message?.chat?.id;
+  
+    // ادامهٔ پردازش callback_query باید همین‌جا اجرا شود
+  }
+  
+  const message = update?.message || update?.channel_post;
+  
   if (!message) {
     return res.status(200).json({ ok: true });
   }
